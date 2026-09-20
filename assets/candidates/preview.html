@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>图标候选预览</title>
+<style>
+  body { font-family: system-ui; background:#1a1d23; color:#eee; padding:24px; }
+  h1 { font-size:18px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; }
+  .card { background:#262b34; border-radius:10px; padding:12px; text-align:center; }
+  .card img { width:128px; height:128px; border-radius:12px; background:repeating-conic-gradient(#333 0 25%, #2a2a2a 0 50%) 0 0/16px 16px; }
+  .card .name { margin-top:8px; font-size:12px; color:#9aa4b2; word-break:break-all; }
+</style>
+</head>
+<body>
+<h1>女仆鲸鱼娘 · 图标候选（左：站姿女仆，右：飞行女仆）</h1>
+<div class="grid" id="grid"></div>
+<script>
+const files = [
+  'maid-left-head-closeup.png',
+  'maid-left-head-shoulder.png',
+  'maid-left-head-torso.png',
+  'maid-right-head-closeup.png',
+  'maid-right-head-shoulder.png'
+]
+const grid = document.getElementById('grid')
+for (const f of files) {
+  const card = document.createElement('div')
+  card.className = 'card'
+  card.innerHTML = `<img src="${f}"><div class="name">${f}</div>`
+  grid.appendChild(card)
+}
+</script>
+</body>
+</html>

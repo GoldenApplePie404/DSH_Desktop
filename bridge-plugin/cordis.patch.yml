@@ -1,0 +1,5 @@
+# 桌面桥插件：作为 bundle 插入 host 组合树。
+# 安装：dsh plugin --profile web add <本目录>
+- insert:
+    - id: desktop-bridge
+      name: dsh-desktop-bridge

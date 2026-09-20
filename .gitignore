@@ -1,0 +1,16 @@
+node_modules/
+release/
+dist/
+vendor/
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# 环境变量（防未来误加 token/密钥）
+.env
+.env.*

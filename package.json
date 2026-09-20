@@ -1,0 +1,62 @@
+{
+  "name": "dsh-desktop-electron",
+  "productName": "DeepSeek Harness Desktop",
+  "version": "0.1.0",
+  "description": "DeepSeek Harness 桌面壳（Electron 最小版）：自动启动 dsh web 并加载到原生窗口，托盘常驻",
+  "main": "main.js",
+  "author": "you",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "smoke": "cross-env DSH_DESKTOP_SMOKE=1 DSH_DESKTOP_BRIDGE_SELF_TEST=1 electron .",
+    "dist": "electron-builder",
+    "dist:portable": "electron-builder --win portable",
+    "dist:dir": "electron-builder --dir",
+    "check:logs": "node scripts/repair-session-log.cjs",
+    "repair": "node scripts/repair-session-log.cjs --fix"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.example.dsh-desktop",
+    "productName": "DeepSeek Harness Desktop",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "vendor/dsh",
+        "to": "dsh",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "win": {
+      "icon": "assets/icon.png",
+      "signAndEditExecutable": false,
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "deleteAppDataOnUninstall": false,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico"
+    },
+    "afterPack": "scripts/after-pack.cjs"
+  }
+}
