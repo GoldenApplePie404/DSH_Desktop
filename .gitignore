@@ -14,3 +14,9 @@ Thumbs.db
 # 环境变量（防未来误加 token/密钥）
 .env
 .env.*
+
+# electron-builder 缓存（构建时临时下载的 Electron 运行时）
+.electron-cache/
+
+# 升级 dsh 版本时产生的旧版备份
+vendor/dsh/node_modules.bak/
